@@ -27,17 +27,17 @@ import com.example.presenta.di.ScreenComponent;
 import com.example.presenta.screen.ChatListScreen;
 import com.example.presenta.screen.FriendListScreen;
 import com.google.gson.Gson;
-import io.techery.presenta.addition.ActionBarOwner;
-import io.techery.presenta.addition.flow.util.GsonParceler;
-import io.techery.presenta.di.ScreenScope;
-import io.techery.presenta.flow.ActivityFlowSupport;
 
 import javax.inject.Inject;
 
+import flow.ActivityFlowSupport;
 import flow.Backstack;
 import flow.Flow;
 import flow.Path;
 import flow.PathContainerView;
+import io.techery.presenta.addition.ActionBarOwner;
+import io.techery.presenta.addition.flow.util.GsonParceler;
+import io.techery.presenta.di.ScreenScope;
 import mortar.MortarScope;
 import mortar.MortarScopeDevHelper;
 import mortar.bundler.BundleServiceRunner;
@@ -149,7 +149,7 @@ public class MortarDemoActivity extends ActionBarActivity
   @Override
   protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    flowSupport.onSaveInstanceState(outState);
+    flowSupport.onSaveInstanceState(outState, container.getCurrentChild());
     getBundleServiceRunner(this).onSaveInstanceState(outState);
   }
 
